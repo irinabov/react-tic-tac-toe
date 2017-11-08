@@ -4,7 +4,7 @@
   "description": "A React implementation of Tic Tac Toe for one or two players",
   "main": "lib/TicTacToe.js",
   "scripts": {
-    "start": "webpack-dev-server --host 10.19.44.37 --devtool eval --progress --colors --hot --content-base public/",
+    "start": "webpack-dev-server --host 0.0.0.0 --devtool eval --progress --colors --hot --content-base public/",
     "test": "webpack-dev-server --config test/webpack.test.config.js",
     "dist": "webpack --config webpack.production.config.js",
     "dist-min": "NODE_ENV=production webpack -p --config webpack.production.config.js",
