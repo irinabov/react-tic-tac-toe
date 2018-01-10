@@ -31,9 +31,13 @@
   },
   "homepage": "http://negomi.github.io/react-tic-tac-toe/",
   "dependencies": {
+    "net": "^1.0.2",
     "normalize.css": "^3.0.3",
     "react": "^0.14.0-rc1",
-    "react-dom": "^0.14.0-rc1"
+    "react-dom": "^0.14.0-rc1",
+    "rhea": "^0.2.9",
+    "tls": "0.0.1",
+    "ws": "^3.3.2"
   },
   "devDependencies": {
     "autoprefixer": "^6.0.3",

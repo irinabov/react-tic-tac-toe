@@ -10,6 +10,18 @@ class TicTacToe extends React.Component {
     super(props);
     this.board = new Board(props.width);
     this.state = {player: 1, freezeBoard: false, winner: false};
+    this.client = require('rhea');
+    this.server = prompt("Please enter server info", "ws://rhm-x3550-09.rhm.lab.eng.bos.redhat.com:8888");
+//    this.server = 'ws://rhm-x3550-09.rhm.lab.eng.bos.redhat.com:8888';
+    this.ws = this.client.websocket_connect(WebSocket);
+    this.connection = this.client.connect({"connection_details":this.ws(this.server, ["binary", "AMQPWSB10", "amqp"]), "reconnect":false});
+    this.receiver = this.connection.open_receiver('examples');
+    this.sender = this.connection.open_sender('examples');
+    //self = this;
+    this.client.on('message', (context) => {
+      const [ x, y ] = context.message.body;
+      this.aiMoveBoard(x, y);
+    });
   }
 
   nextPlayer() {
@@ -48,6 +60,11 @@ class TicTacToe extends React.Component {
   aiMove() {
     const [ x, y ] = ai.move(this.board, this.state.player);
 
+    var msg = [ x, y ];
+    this.sender.send({body:msg});
+  }
+
+  aiMoveBoard(x, y) {
     setTimeout(() => {
       this.move(x, y, this.state.player, () => {
         this.setState({player: this.nextPlayer(), freezeBoard: false});
