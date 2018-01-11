@@ -98,7 +98,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this.board = new _board2['default'](props.width);
 	    this.state = { player: 1, freezeBoard: false, winner: false };
 	    this.client = __webpack_require__(4);
-	    this.server = prompt("Please enter server info", "ws://rhm-x3550-09.rhm.lab.eng.bos.redhat.com:8888");
+	    this.server = prompt("Please enter server info", "ws://<server>:8888");
 	    //    this.server = 'ws://rhm-x3550-09.rhm.lab.eng.bos.redhat.com:8888';
 	    this.ws = this.client.websocket_connect(WebSocket);
 	    this.connection = this.client.connect({ "connection_details": this.ws(this.server, ["binary", "AMQPWSB10", "amqp"]), "reconnect": false });

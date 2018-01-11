@@ -11,7 +11,7 @@ class TicTacToe extends React.Component {
     this.board = new Board(props.width);
     this.state = {player: 1, freezeBoard: false, winner: false};
     this.client = require('rhea');
-    this.server = prompt("Please enter server info", "ws://rhm-x3550-09.rhm.lab.eng.bos.redhat.com:8888");
+    this.server = prompt("Please enter server info", "ws://<server>:8888");
 //    this.server = 'ws://rhm-x3550-09.rhm.lab.eng.bos.redhat.com:8888';
     this.ws = this.client.websocket_connect(WebSocket);
     this.connection = this.client.connect({"connection_details":this.ws(this.server, ["binary", "AMQPWSB10", "amqp"]), "reconnect":false});
